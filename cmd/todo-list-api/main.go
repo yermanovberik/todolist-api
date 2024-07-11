@@ -3,16 +3,15 @@ package main
 import (
 	"log"
 	"net/http"
-	"todo-list-api/internal/handler"
+	"todo-list-api/internal/app"
 )
 
 func main() {
+	router := app.NewRouter()
 
-	http.HandleFunc("/api/todo-list/tasks", handler.CreateTask)
 	log.Println("Starting server on port :8080")
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatal(err)
 	}
-
 }

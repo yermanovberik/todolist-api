@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: todo-list-api
+    env: go
+    buildCommand: go build -o bin/todo-list-api
+    startCommand: ./bin/todo-list-api
+    plan: free

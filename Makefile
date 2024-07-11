@@ -1,10 +1,16 @@
+.PHONY: build run docker-build docker-run docker-compose-up
+
 build:
-	docker-compsoe build
+	go build -o main ./cmd
 
-up:
-	docker-compose up
+run: build
+	./main
 
-down:
-	docker-compose down
+docker-build:
+	docker build -t todo-list-api .
 
-restart: down up
+docker-run:
+	docker run -p 8080:8080 todo-list-api
+
+docker compose up:
+	docker compose up --build
